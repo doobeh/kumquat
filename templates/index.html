@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+    <div class="row">
+{% block content_title %}
+{% endblock %}
+<div class="large-12 columns">
+{% for article in articles_page.object_list %}
+        <article>
+            <header class="post-heading">
+                <h4><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h4>
+            </header>
+            <footer class="post-info">
+                By {{ AUTHOR }} on  {{ article.locale_date }}
+            </footer><!-- /.post-info -->
+                <div class="entry-content"> {{ article.summary }} </div><!-- /.entry-content -->
+        </article>
+{% endfor %}
+</div>
+{% include 'pagination.html' %}
+    </div>
+</section><!-- /#content -->
+{% endblock content %}

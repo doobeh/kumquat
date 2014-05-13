@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Authors{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h4 class="author-heading">Authors on {{ SITENAME }}</h4>
+            <ul class="no-bullet">
+            {%- for author, articles in authors|sort %}
+                {% if articles|count == 1 %}
+                    <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> has published <a href="{{ SITEURL }}/{{ author.url }}">{{ articles|count }} article</a>.</li>
+                {% else %}
+                    <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> has published <a href="{{ SITEURL }}/{{ author.url }}">{{ articles|count }} articles</a>.</li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
